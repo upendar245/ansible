@@ -1,0 +1,17 @@
+--- #disabling selinux
+-  hosts: local
+   remote_user: root
+   gather_facts: yes
+   tasks:
+   -  name: stop and disable firewalld
+      systemd:
+        name: firewalld
+        enabled: False
+        state: stopped
+   -  name: disable selinux
+      selinux:
+        state: disabled
+      notify: reboot
+   handlers:
+   -  name: reboot
+      shell: shutdown -r now
