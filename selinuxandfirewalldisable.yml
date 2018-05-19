@@ -8,6 +8,7 @@
         name: firewalld
         enabled: False
         state: stopped
+      ignore_errors: yes
    -  name: disable selinux
       selinux:
         state: disabled
