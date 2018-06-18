@@ -1,0 +1,23 @@
+- hosts: '127.0.0.1'
+  tasks:
+    - name : check if grub is modified for console redirection
+      command: grep 'ttyS0,115200' /etc/default/grub
+      register: result
+      ignore_errors: True
+      tag: test
+    - name : appending
+      command : sed -i '/^GRUB_CMDLINE_LINUX/ s/"$/ console=ttyS0,115200"/' /etc/default/grub
+      when: result is failed
+      notify: rebuildgrub
+    - name : check if grub is modified for console redirection 2
+      command : grep GRUB_TERMINAL_OUTPUT /etc/default/grub | grep serial
+      register: result1
+      ignore_errors: True
+      tag: test2
+    - name : adding console to GRUB_TERMINAL_OUTPUT
+      command : sed -i '/^GRUB_TERMINAL_OUTPUT/ s/"$/ serial"/' /etc/default/grub
+      when: result1 is failed
+      notify: rebuildgrub
+  handlers:
+    - name : rebuildgrub
+      shell: grub2-mkconfig -o /boot/grub2/grub.cfg
