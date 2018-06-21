@@ -3,9 +3,11 @@
    vars:
      from1: "camelot"
    vars_prompt:
-     - name: "name"
-       prompt: "what is your name?"
-     - name: "quest"
-       prompt: "what is your quest?"
-     - name: "favcolor"
-       prompt: "what is your favorite color?"
+     - name: pkg
+       prompt: "what is your package?"
+       default: telnet
+   tasks:
+   - name: Install desired package
+     yum:
+     name: "{{ pkg }}"
+     state: installed
