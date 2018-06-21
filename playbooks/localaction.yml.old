@@ -1,0 +1,7 @@
+--- #Local Action DEMO 
+-  hosts: all
+   tasks:
+   -  name: Ping application server before we run our install
+      local_action: command ping -c 4 sidev1574
+   -  name: Install Lynx on remote server
+      yum: pkg=lynx state=latest
