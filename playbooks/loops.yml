@@ -1,0 +1,16 @@
+--- # Playbooks - Loops
+-  hosts: all
+   connection: ssh
+   gather_facts: no
+    
+   vars_files:
+     - /root/playbooks/conf/copyright.yml
+     - /root/playbooks/conf/webdefaults.yml
+   tasks:
+     - name: add several users
+       user:
+         name: "{{ item.name }}"
+         state: absent
+         groups: "{{ item.groups }}"
+       loop:
+         - { name: 'uginjupalli1',  groups: 'root' }

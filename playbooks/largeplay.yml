@@ -1,0 +1,5 @@
+--- #Building a Larger Playbook - Target Section
+-  hosts: all
+   connection: ssh
+   become: no 
+   gather_facts: no

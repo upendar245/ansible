@@ -1,0 +1,12 @@
+--- #disabling selinux
+-  hosts: local
+   remote_user: root
+   gather_facts: yes
+   tasks:
+   -  name: Edit grub to make console working 
+      lineinfile: 
+        dest: "/root/grub"
+        regexp: '^GRUB_CMDLINE_LINU="console=tty0 console=ttyS0,115200"$'
+        line: 'GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200'
+      register: reg_hp_serial_terminal
+   - debug: var=reg_hp_serial_terminal  

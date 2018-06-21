@@ -1,0 +1,9 @@
+--- #Exercise: Playbooks - Conditionals
+-  hosts: redhat
+   gather_facts: yes
+   tasks:
+     - name : Installing httpd on redhat 
+       yum:
+         name: httpd
+         state: installed
+       when: ansible_os_family == "RedHat"

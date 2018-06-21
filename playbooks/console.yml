@@ -1,0 +1,11 @@
+--- #disabling selinux
+-  hosts: local
+   remote_user: root
+   gather_facts: yes
+   tasks:
+   -  name: Edit grub to make console working 
+      lineinfile: 
+        path: "/root/config"
+        backup: True
+        state: present
+        line: 'GRUB_CMDLINE_LINUX=$GRUB_CMDLINE_LINUX" transparent_hugepage=never"'

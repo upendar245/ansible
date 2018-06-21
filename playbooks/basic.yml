@@ -1,0 +1,27 @@
+--- #disabling selinux
+-  hosts: all
+   remote_user: root
+   gather_facts: yes
+   tasks:
+   -  name: stop and disable firewalld
+      systemd:
+        name: firewalld
+        enabled: False
+        state: stopped
+      ignore_errors: yes
+   -  name: disable selinux
+      selinux:
+        state: disabled
+      notify: reboot
+   -  name: Uninstalling firewalld
+      yum:
+        name: firewalld
+        state: absent
+   handlers:
+   -  name: reboot
+      shell: shutdown -r now
+   -  name: Uninstalling firewalld 
+      yum:
+        name: firewalld
+        state: absent 
+     

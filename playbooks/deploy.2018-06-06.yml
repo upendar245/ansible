@@ -1,0 +1,7 @@
+--- # Create a Simple Playbook
+-  hosts: centos
+   tasks:
+   -  name: Installing Lynx package
+      yum: pkg=lynx state=installed 
+   -  name: Querying if telnet is installed or not 
+      yum: pkg=telnet state=present update_cache=true

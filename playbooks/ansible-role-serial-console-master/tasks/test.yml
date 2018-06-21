@@ -1,0 +1,5 @@
+---# test
+- hosts: all
+  roles:
+     - { role: ansible-role-hp-serial }
+  

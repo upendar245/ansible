@@ -1,0 +1,15 @@
+--- # Building a Larger Playbook - Variable Section
+-  hosts: all
+   vars_files:
+     - /root/playbooks/conf/copyright.yml
+     - /root/playbooks/conf/webdefaults.yml
+   tasks:
+     - name : Install httpd
+       yum:
+         name: httpd
+         state: present
+     - name: Check if lynx is installed 
+       yum:
+         name: lynx
+         state: present         
+ 

@@ -1,0 +1,9 @@
+--- #Exercise: Playbooks - Lookup
+-  hosts: redhat
+   gather_facts: yes
+   vars:
+     home_directory: "{{ lookup('dig', 'example.com.') }}"
+   tasks:
+     - debug:
+         msg: "USER NAME IS  {{ home_directory }}"
+  

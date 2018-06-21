@@ -1,0 +1,8 @@
+---# installing jenkins deps and make it running
+- hosts: jenkins
+  tasks:
+     - name: Install java
+       yum:
+         name: java
+         state: installed
+        

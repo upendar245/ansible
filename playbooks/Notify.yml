@@ -1,0 +1,15 @@
+--- #Exercise: Playbooks - Notify
+-  hosts: centos
+   gather_facts: no
+   tasks:
+     - name: Install apache
+       yum: 
+         name: httpd
+         state: installed
+       notify: httpdrestart
+   handlers: 
+     - name: httpdrestart
+       systemd: 
+         name: httpd
+         state: restarted
+        

@@ -1,0 +1,14 @@
+--- #disabling selinux
+-  hosts: jenkins
+   remote_user: root
+   gather_facts: yes
+   vars:
+     sftp_group_name: test
+   tasks:
+   - name: lineinfile grub_terminal
+     lineinfile:
+       dest: /root/config
+       backup: True
+       backrefs: True
+       regexp: '/^GRUB_CMDLINE_LINUX/ s/"$'
+       line: '\1 pcie_aspm=off'
