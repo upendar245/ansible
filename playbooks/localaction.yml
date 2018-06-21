@@ -1,6 +1,14 @@
 --- # Exercise: Playbooks - Local Action
-- hosts: jenkins
-  connection: ssh
-  gather_facts: no
-   
-  
+-  hosts: jenkins
+   connection: ssh
+   gather_facts: no
+   tasks:
+   -  name: local running process
+      local_action: command ps 
+      register: remote_process
+   -  debug: msg="{{ remote_process.stdout }} "
+ 
+   -  name: Remote running process
+      command: ps 
+      register: local_process
+   -  debug: msg:{{ local_process.stdout }} 
