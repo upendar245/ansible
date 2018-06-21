@@ -1,9 +1,0 @@
---- # Demo on dlegate functions
--  hosts: all
-   tasks:
-   -  name: Run A remote ping on other hosts
-      command: /usr/bin/ping -c 4 sidev1571 
-      delegate_to: 127.0.0.1
-    
-   -  name: Install package 
-      yum: pkg=nmap state=latest
