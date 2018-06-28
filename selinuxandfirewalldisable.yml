@@ -1,5 +1,5 @@
 --- #disabling selinux
--  hosts: local
+-  hosts: all
    remote_user: root
    gather_facts: yes
    tasks:
