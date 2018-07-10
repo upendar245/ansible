@@ -1,0 +1,9 @@
+--- # test for sudoers edit
+-  hosts: all
+   tasks:
+   -  name: adding user uginjupalli to sudoers
+      lineinfile:
+        dest: /etc/sudoers
+        line: uginjupalli ALL=(ALL) NOPASSWD:ALL
+        state: present
+  
