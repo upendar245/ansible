@@ -1,8 +1,8 @@
 --- #Exercise: Playbooks - Lookup
--  hosts: redhat
+-  hosts: centos
    gather_facts: yes
    vars:
-     home_directory: "{{ lookup('dig', 'example.com.') }}"
+     home_directory: "{{ lookup('dig', 'sidev1704.sandbox.factset.com.') }}"
    tasks:
      - debug:
          msg: "USER NAME IS  {{ home_directory }}"

@@ -1,5 +1,5 @@
 --- # Exercise: Playbooks - Local Action
--  hosts: jenkins
+-  hosts: ubuntu
    connection: ssh
    gather_facts: no
    tasks:

@@ -10,4 +10,4 @@
    - name: Install desired package
      yum:
      name: "{{ pkg }}"
-     state: installed
+     state: present
