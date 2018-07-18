@@ -1,0 +1,14 @@
+- name: test play
+  hosts: centos
+  gather_facts: False
+  tasks:
+    - name : pulling info
+      yum: 
+        name: python2*
+        state: present
+        disablerepo: epel
+      register: list
+      async: 30
+      poll: 1
+    - debug :
+        var: list

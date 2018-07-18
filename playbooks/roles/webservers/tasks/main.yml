@@ -1,0 +1,7 @@
+- name: Install (Red Hat/CentOS) Apache Web Server
+
+  yum: pkg=httpd state=latest
+
+- name: Install (Red Hat/CentOS) Apache Web Server
+
+  yum: pkg=telnet state=latest

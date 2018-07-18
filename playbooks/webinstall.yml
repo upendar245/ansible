@@ -1,0 +1,9 @@
+--- # Master Playbook for Web Servers
+
+- hosts: apache:!ubuntu
+
+  connection: ssh
+
+  roles:
+
+  - webservers

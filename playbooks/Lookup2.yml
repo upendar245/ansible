@@ -1,0 +1,9 @@
+--- #Exercise: Playbooks - Lookup
+-  hosts: centos
+   gather_facts: yes
+   vars:
+     home_directory: "{{ lookup('file', '/etc/motd') }}"
+   tasks:
+     - debug:
+         msg: "USER NAME IS  {{ home_directory }}"
+  
